@@ -32,8 +32,30 @@ namespace io.github.azukimochi
         private SerializedProperty Excludes;
         private SerializedProperty WriteDefaults;
 
+        // HSV Controls (lilToon)
+        private SerializedProperty AllowHueControl;
+        private SerializedProperty AllowValueControl;
+        private SerializedProperty AllowGammaControl;
+        private SerializedProperty InitialHueControlValue;
+        private SerializedProperty InitialValueControlValue;
+        private SerializedProperty InitialGammaControlValue;
+
+        // lilToon Specific Controls
+        private SerializedProperty AllowLightDirectionControl;
+        private SerializedProperty AllowRimLightControl;
+        private SerializedProperty AllowBacklightControl;
+        private SerializedProperty AllowDistanceFadeControl;
+        private SerializedProperty AllowShadowEnvStrengthControl;
+        private SerializedProperty AllowVertexLightStrengthControl;
+        private SerializedProperty InitialRimLightStrengthValue;
+        private SerializedProperty InitialBacklightStrengthValue;
+        private SerializedProperty InitialDistanceFadeStrengthValue;
+        private SerializedProperty InitialShadowEnvStrengthValue;
+        private SerializedProperty InitialVertexLightStrengthValue;
+
         private static bool _isOptionFoldoutOpen = true;
         private static bool _isCepareteInitValFoldoutOpen = false;
+        private static bool _isLilToonFoldoutOpen = false;
 
         internal bool IsWindowMode = false;
 
@@ -66,6 +88,27 @@ namespace io.github.azukimochi
             IsGroupingAdditionalControls = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.IsGroupingAdditionalControls));
             Excludes = serializedObject.FindProperty(nameof(LightLimitChangerSettings.Excludes));
             WriteDefaults = serializedObject.FindProperty(nameof(LightLimitChangerSettings.WriteDefaults));
+
+            // HSV Controls (lilToon)
+            AllowHueControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowHueControl));
+            AllowValueControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowValueControl));
+            AllowGammaControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowGammaControl));
+            InitialHueControlValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialHueControlValue));
+            InitialValueControlValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialValueControlValue));
+            InitialGammaControlValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialGammaControlValue));
+
+            // lilToon Specific Controls
+            AllowLightDirectionControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowLightDirectionControl));
+            AllowRimLightControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowRimLightControl));
+            AllowBacklightControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowBacklightControl));
+            AllowDistanceFadeControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowDistanceFadeControl));
+            AllowShadowEnvStrengthControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowShadowEnvStrengthControl));
+            AllowVertexLightStrengthControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowVertexLightStrengthControl));
+            InitialRimLightStrengthValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialRimLightStrengthValue));
+            InitialBacklightStrengthValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialBacklightStrengthValue));
+            InitialDistanceFadeStrengthValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialDistanceFadeStrengthValue));
+            InitialShadowEnvStrengthValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialShadowEnvStrengthValue));
+            InitialVertexLightStrengthValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialVertexLightStrengthValue));
         }
 
         public override void OnInspectorGUI()
@@ -203,6 +246,105 @@ namespace io.github.azukimochi
                         EditorGUI.BeginDisabledGroup(AllowUnlitControl.boolValue == false);
                         EditorGUILayout.PropertyField(InitialUnlitControlValue, Localization.G(""));
                         EditorGUI.EndDisabledGroup();
+                    }
+                }
+            }
+
+            // lilToon Specific Settings
+            EditorGUILayout.Space(10);
+            using (var group = new Utils.FoldoutHeaderGroupScope(ref _isLilToonFoldoutOpen, Localization.G("label.category.liltoon_settings")))
+            {
+                if (group.IsOpen)
+                {
+                    EditorGUILayout.HelpBox(Localization.S("info.liltoon_only"), MessageType.Info);
+
+                    using (new EditorGUILayout.HorizontalScope())
+                    {
+                        using (new EditorGUILayout.VerticalScope())
+                        {
+                            EditorGUILayout.LabelField(Localization.G("label.category.hsv_controls"), EditorStyles.boldLabel);
+                            EditorGUILayout.PropertyField(AllowHueControl, Localization.G("label.allow_hue", "tip.allow_hue"));
+                            EditorGUILayout.PropertyField(AllowValueControl, Localization.G("label.allow_value", "tip.allow_value"));
+                            EditorGUILayout.PropertyField(AllowGammaControl, Localization.G("label.allow_gamma", "tip.allow_gamma"));
+
+                            EditorGUILayout.Space(10);
+                            EditorGUILayout.LabelField(Localization.G("label.category.light_controls"), EditorStyles.boldLabel);
+                            EditorGUILayout.PropertyField(AllowLightDirectionControl, Localization.G("label.allow_light_direction", "tip.allow_light_direction"));
+                            EditorGUILayout.PropertyField(AllowRimLightControl, Localization.G("label.allow_rim_light", "tip.allow_rim_light"));
+                            EditorGUILayout.PropertyField(AllowBacklightControl, Localization.G("label.allow_backlight", "tip.allow_backlight"));
+                            EditorGUILayout.PropertyField(AllowDistanceFadeControl, Localization.G("label.allow_distance_fade", "tip.allow_distance_fade"));
+                            EditorGUILayout.PropertyField(AllowShadowEnvStrengthControl, Localization.G("label.allow_shadow_env_strength", "tip.allow_shadow_env_strength"));
+                            EditorGUILayout.PropertyField(AllowVertexLightStrengthControl, Localization.G("label.allow_vertex_light_strength", "tip.allow_vertex_light_strength"));
+                        }
+
+                        using (new EditorGUILayout.VerticalScope(GUI.skin.box))
+                        {
+                            EditorGUILayout.LabelField(Localization.G("info.initial_val_liltoon"));
+                            using (new EditorGUILayout.HorizontalScope())
+                            {
+                                EditorGUILayout.Space(10);
+                                EditorGUILayout.LabelField(Localization.G("label.hue"), GUILayout.MaxWidth(80.0f), GUILayout.ExpandWidth(false));
+                                EditorGUI.BeginDisabledGroup(AllowHueControl.boolValue == false);
+                                EditorGUILayout.PropertyField(InitialHueControlValue, Localization.G(""));
+                                EditorGUI.EndDisabledGroup();
+                            }
+                            using (new EditorGUILayout.HorizontalScope())
+                            {
+                                EditorGUILayout.Space(10);
+                                EditorGUILayout.LabelField(Localization.G("label.value"), GUILayout.MaxWidth(80.0f), GUILayout.ExpandWidth(false));
+                                EditorGUI.BeginDisabledGroup(AllowValueControl.boolValue == false);
+                                EditorGUILayout.PropertyField(InitialValueControlValue, Localization.G(""));
+                                EditorGUI.EndDisabledGroup();
+                            }
+                            using (new EditorGUILayout.HorizontalScope())
+                            {
+                                EditorGUILayout.Space(10);
+                                EditorGUILayout.LabelField(Localization.G("label.gamma"), GUILayout.MaxWidth(80.0f), GUILayout.ExpandWidth(false));
+                                EditorGUI.BeginDisabledGroup(AllowGammaControl.boolValue == false);
+                                EditorGUILayout.PropertyField(InitialGammaControlValue, Localization.G(""));
+                                EditorGUI.EndDisabledGroup();
+                            }
+                            using (new EditorGUILayout.HorizontalScope())
+                            {
+                                EditorGUILayout.Space(10);
+                                EditorGUILayout.LabelField(Localization.G("label.rim_light"), GUILayout.MaxWidth(80.0f), GUILayout.ExpandWidth(false));
+                                EditorGUI.BeginDisabledGroup(AllowRimLightControl.boolValue == false);
+                                EditorGUILayout.PropertyField(InitialRimLightStrengthValue, Localization.G(""));
+                                EditorGUI.EndDisabledGroup();
+                            }
+                            using (new EditorGUILayout.HorizontalScope())
+                            {
+                                EditorGUILayout.Space(10);
+                                EditorGUILayout.LabelField(Localization.G("label.backlight"), GUILayout.MaxWidth(80.0f), GUILayout.ExpandWidth(false));
+                                EditorGUI.BeginDisabledGroup(AllowBacklightControl.boolValue == false);
+                                EditorGUILayout.PropertyField(InitialBacklightStrengthValue, Localization.G(""));
+                                EditorGUI.EndDisabledGroup();
+                            }
+                            using (new EditorGUILayout.HorizontalScope())
+                            {
+                                EditorGUILayout.Space(10);
+                                EditorGUILayout.LabelField(Localization.G("label.distance_fade"), GUILayout.MaxWidth(80.0f), GUILayout.ExpandWidth(false));
+                                EditorGUI.BeginDisabledGroup(AllowDistanceFadeControl.boolValue == false);
+                                EditorGUILayout.PropertyField(InitialDistanceFadeStrengthValue, Localization.G(""));
+                                EditorGUI.EndDisabledGroup();
+                            }
+                            using (new EditorGUILayout.HorizontalScope())
+                            {
+                                EditorGUILayout.Space(10);
+                                EditorGUILayout.LabelField(Localization.G("label.shadow_env"), GUILayout.MaxWidth(80.0f), GUILayout.ExpandWidth(false));
+                                EditorGUI.BeginDisabledGroup(AllowShadowEnvStrengthControl.boolValue == false);
+                                EditorGUILayout.PropertyField(InitialShadowEnvStrengthValue, Localization.G(""));
+                                EditorGUI.EndDisabledGroup();
+                            }
+                            using (new EditorGUILayout.HorizontalScope())
+                            {
+                                EditorGUILayout.Space(10);
+                                EditorGUILayout.LabelField(Localization.G("label.vertex_light"), GUILayout.MaxWidth(80.0f), GUILayout.ExpandWidth(false));
+                                EditorGUI.BeginDisabledGroup(AllowVertexLightStrengthControl.boolValue == false);
+                                EditorGUILayout.PropertyField(InitialVertexLightStrengthValue, Localization.G(""));
+                                EditorGUI.EndDisabledGroup();
+                            }
+                        }
                     }
                 }
             }
