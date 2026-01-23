@@ -53,9 +53,46 @@ namespace io.github.azukimochi
         
         [Range(0,1)]
         public float InitialUnlitControlValue = 0.0f;
-        
+
         public bool IsSeparateLightControl = false;
 
         public bool IsGroupingAdditionalControls = false;
+
+        // HSV Controls (lilToon)
+        public bool AllowHueControl = false;
+        public bool AllowValueControl = false;
+        public bool AllowGammaControl = false;
+
+        [Range(0,1)]
+        public float InitialHueControlValue = 0.5f;
+
+        [Range(0,1)]
+        public float InitialValueControlValue = 0.5f;
+
+        [Range(0,1)]
+        public float InitialGammaControlValue = 0.5f;
+
+        // lilToon Specific Controls
+        public bool AllowLightDirectionControl = false;
+        public bool AllowRimLightControl = false;
+        public bool AllowBacklightControl = false;
+        public bool AllowDistanceFadeControl = false;
+        public bool AllowShadowEnvStrengthControl = false;
+        public bool AllowVertexLightStrengthControl = false;
+
+        [Range(0,1)]
+        public float InitialRimLightStrengthValue = 0.5f;
+
+        [Range(0,1)]
+        public float InitialBacklightStrengthValue = 0.5f;
+
+        [Range(0,1)]
+        public float InitialDistanceFadeStrengthValue = 0.5f;
+
+        [Range(0,1)]
+        public float InitialShadowEnvStrengthValue = 0.5f;
+
+        [Range(0,1)]
+        public float InitialVertexLightStrengthValue = 0.5f;
     }
 }
