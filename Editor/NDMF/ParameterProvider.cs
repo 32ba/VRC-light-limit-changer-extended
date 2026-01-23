@@ -49,6 +49,35 @@ namespace io.github.azukimochi
 
             if (parameters.AllowEmissionControl)
                 yield return Parameter<float>(Passes.ParameterName_Emission);
+
+            // HSV Controls (lilToon)
+            if (parameters.AllowHueControl)
+                yield return Parameter<float>(Passes.ParameterName_Hue);
+
+            if (parameters.AllowValueControl)
+                yield return Parameter<float>(Passes.ParameterName_Value_HSV);
+
+            if (parameters.AllowGammaControl)
+                yield return Parameter<float>(Passes.ParameterName_Gamma);
+
+            // lilToon Specific Controls
+            if (parameters.AllowLightDirectionControl)
+                yield return Parameter<float>(Passes.ParameterName_LightDirection);
+
+            if (parameters.AllowRimLightControl)
+                yield return Parameter<float>(Passes.ParameterName_RimLight);
+
+            if (parameters.AllowBacklightControl)
+                yield return Parameter<float>(Passes.ParameterName_Backlight);
+
+            if (parameters.AllowDistanceFadeControl)
+                yield return Parameter<float>(Passes.ParameterName_DistanceFade);
+
+            if (parameters.AllowShadowEnvStrengthControl)
+                yield return Parameter<float>(Passes.ParameterName_ShadowEnvStrength);
+
+            if (parameters.AllowVertexLightStrengthControl)
+                yield return Parameter<float>(Passes.ParameterName_VertexLightStrength);
         }
 
         private ProvidedParameter Parameter<T>(string name, bool sync = true, ParameterNamespace @namespace = ParameterNamespace.Animator) 
