@@ -27,6 +27,22 @@ namespace io.github.azukimochi
             public const string _EmissionBlend = "_EmissionBlend";
             public const string _Emission2ndBlend = "_Emission2ndBlend";
 
+            // lilToon Specific Properties
+            public const string _LightDirectionOverride = "_LightDirectionOverride";
+            public const string _UseRim = "_UseRim";
+            public const string _RimMainStrength = "_RimMainStrength";
+            public const string _RimBorder = "_RimBorder";
+            public const string _RimBlur = "_RimBlur";
+            public const string _RimFresnelPower = "_RimFresnelPower";
+            public const string _UseBacklight = "_UseBacklight";
+            public const string _BacklightMainStrength = "_BacklightMainStrength";
+            public const string _BacklightBorder = "_BacklightBorder";
+            public const string _BacklightBlur = "_BacklightBlur";
+            public const string _BacklightDirectivity = "_BacklightDirectivity";
+            public const string _DistanceFade = "_DistanceFade";
+            public const string _ShadowEnvStrength = "_ShadowEnvStrength";
+            public const string _VertexLightStrength = "_VertexLightStrength";
+
             private static class PropertyIDs
             {
                 public static readonly int LightMinLimit = Shader.PropertyToID(_LightMinLimit);
@@ -43,10 +59,25 @@ namespace io.github.azukimochi
                 public static readonly int MainGradationStrength = Shader.PropertyToID(_MainGradationStrength);
                 public static readonly int MainColorAdjustMask = Shader.PropertyToID(_MainColorAdjustMask);
                 public static readonly int MonochromeLighting = Shader.PropertyToID(_MonochromeLighting);
+                public static readonly int LightDirectionOverride = Shader.PropertyToID(_LightDirectionOverride);
+                public static readonly int UseRim = Shader.PropertyToID(_UseRim);
+                public static readonly int RimMainStrength = Shader.PropertyToID(_RimMainStrength);
+                public static readonly int RimBorder = Shader.PropertyToID(_RimBorder);
+                public static readonly int RimBlur = Shader.PropertyToID(_RimBlur);
+                public static readonly int RimFresnelPower = Shader.PropertyToID(_RimFresnelPower);
+                public static readonly int UseBacklight = Shader.PropertyToID(_UseBacklight);
+                public static readonly int BacklightMainStrength = Shader.PropertyToID(_BacklightMainStrength);
+                public static readonly int BacklightBorder = Shader.PropertyToID(_BacklightBorder);
+                public static readonly int BacklightBlur = Shader.PropertyToID(_BacklightBlur);
+                public static readonly int BacklightDirectivity = Shader.PropertyToID(_BacklightDirectivity);
+                public static readonly int DistanceFade = Shader.PropertyToID(_DistanceFade);
+                public static readonly int ShadowEnvStrength = Shader.PropertyToID(_ShadowEnvStrength);
+                public static readonly int VertexLightStrength = Shader.PropertyToID(_VertexLightStrength);
             }
 
             private static class DefaultParameters
             {
+                // v2ドキュメントに基づくデフォルト値
                 public static readonly float LightMinLimit = 0.05f;
                 public static readonly float LightMaxLimit = 1f;
                 public static readonly Color Color = Color.white;
@@ -55,6 +86,20 @@ namespace io.github.azukimochi
                 public static readonly Vector4 MainTexHSVG = new Vector4(0, 1, 1, 1);
                 public static readonly float MainGradationStrength = 0;
                 public static readonly float MonochromeLighting = 0;
+                public static readonly Vector4 LightDirectionOverride = new Vector4(0, 0.001f, 0, 0);
+                public static readonly float UseRim = 0;
+                public static readonly float RimMainStrength = 0;
+                public static readonly float RimBorder = 0.5f;
+                public static readonly float RimBlur = 0.65f;
+                public static readonly float RimFresnelPower = 3.5f;
+                public static readonly float UseBacklight = 0;
+                public static readonly float BacklightMainStrength = 0;
+                public static readonly float BacklightBorder = 0.65f;
+                public static readonly float BacklightBlur = 0.05f;
+                public static readonly float BacklightDirectivity = 5.0f;
+                public static readonly Vector4 DistanceFade = new Vector4(0.1f, 0.01f, 0, 0);
+                public static readonly float ShadowEnvStrength = 0;
+                public static readonly float VertexLightStrength = 0;
             }
 
             public override bool TryNormalizeMaterial(Material material, LightLimitChangerObjectCache cache)
@@ -245,6 +290,117 @@ namespace io.github.azukimochi
                         container.Default.SetParameterAnimation(parameters, _Color3rd, DefaultParameters.Color3rd);
                         container.Control.SetColorTempertureAnimation(parameters, _Color3rd);
                     }
+                }
+
+                // HSV Controls: Hue
+                if (container.ControlType.HasFlag(LightLimitControlType.Hue) && !skipOptions.Contains("lilHue", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, $"{_MainTexHSVG}.x", DefaultParameters.MainTexHSVG.x);
+                    container.Control.SetParameterAnimation(parameters, $"{_MainTexHSVG}.x", -0.5f, 0.5f);
+                }
+
+                // HSV Controls: Value
+                if (container.ControlType.HasFlag(LightLimitControlType.Value) && !skipOptions.Contains("lilValue", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, $"{_MainTexHSVG}.z", DefaultParameters.MainTexHSVG.z);
+                    container.Control.SetParameterAnimation(parameters, $"{_MainTexHSVG}.z", 0, 2);
+                }
+
+                // HSV Controls: Gamma
+                if (container.ControlType.HasFlag(LightLimitControlType.Gamma) && !skipOptions.Contains("lilGamma", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, $"{_MainTexHSVG}.w", DefaultParameters.MainTexHSVG.w);
+                    container.Control.SetParameterAnimation(parameters, $"{_MainTexHSVG}.w", 0.01f, 2);
+                }
+
+                // Light Direction Override
+                if (container.ControlType.HasFlag(LightLimitControlType.LightDirection) && !skipOptions.Contains("lilLightDirection", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _LightDirectionOverride, DefaultParameters.LightDirectionOverride);
+                    container.Control.SetParameterAnimation(parameters, $"{_LightDirectionOverride}.x", -1, 1);
+                    container.Control.SetParameterAnimation(parameters, $"{_LightDirectionOverride}.y", -1, 1);
+                    container.Control.SetParameterAnimation(parameters, $"{_LightDirectionOverride}.z", -1, 1);
+                    container.Control.SetParameterAnimation(parameters, $"{_LightDirectionOverride}.w", 0, 1);
+                }
+
+                // Rim Light Control
+                if (container.ControlType.HasFlag(LightLimitControlType.RimLight) && !skipOptions.Contains("lilRimLight", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _RimMainStrength, DefaultParameters.RimMainStrength);
+                    container.Control.SetParameterAnimation(parameters, _RimMainStrength, 0, 1);
+                }
+
+                // Rim Light Border Control
+                if (container.ControlType.HasFlag(LightLimitControlType.RimLightBorder) && !skipOptions.Contains("lilRimLightBorder", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _RimBorder, DefaultParameters.RimBorder);
+                    container.Control.SetParameterAnimation(parameters, _RimBorder, 0, 1);
+                }
+
+                // Rim Light Blur Control
+                if (container.ControlType.HasFlag(LightLimitControlType.RimLightBlur) && !skipOptions.Contains("lilRimLightBlur", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _RimBlur, DefaultParameters.RimBlur);
+                    container.Control.SetParameterAnimation(parameters, _RimBlur, 0, 1);
+                }
+
+                // Rim Light Fresnel Power Control
+                if (container.ControlType.HasFlag(LightLimitControlType.RimLightFresnelPower) && !skipOptions.Contains("lilRimLightFresnelPower", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _RimFresnelPower, DefaultParameters.RimFresnelPower);
+                    container.Control.SetParameterAnimation(parameters, _RimFresnelPower, 0.01f, 50);
+                }
+
+                // Backlight Control
+                if (container.ControlType.HasFlag(LightLimitControlType.Backlight) && !skipOptions.Contains("lilBacklight", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _BacklightMainStrength, DefaultParameters.BacklightMainStrength);
+                    container.Control.SetParameterAnimation(parameters, _BacklightMainStrength, 0, 1);
+                }
+
+                // Backlight Border Control
+                if (container.ControlType.HasFlag(LightLimitControlType.BacklightBorder) && !skipOptions.Contains("lilBacklightBorder", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _BacklightBorder, DefaultParameters.BacklightBorder);
+                    container.Control.SetParameterAnimation(parameters, _BacklightBorder, 0, 1);
+                }
+
+                // Backlight Blur Control
+                if (container.ControlType.HasFlag(LightLimitControlType.BacklightBlur) && !skipOptions.Contains("lilBacklightBlur", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _BacklightBlur, DefaultParameters.BacklightBlur);
+                    container.Control.SetParameterAnimation(parameters, _BacklightBlur, 0, 1);
+                }
+
+                // Backlight Directivity Control
+                if (container.ControlType.HasFlag(LightLimitControlType.BacklightDirectivity) && !skipOptions.Contains("lilBacklightDirectivity", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _BacklightDirectivity, DefaultParameters.BacklightDirectivity);
+                    container.Control.SetParameterAnimation(parameters, _BacklightDirectivity, 0, 10);
+                }
+
+                // Distance Fade Control
+                if (container.ControlType.HasFlag(LightLimitControlType.DistanceFade) && !skipOptions.Contains("lilDistanceFade", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _DistanceFade, DefaultParameters.DistanceFade);
+                    container.Control.SetParameterAnimation(parameters, $"{_DistanceFade}.x", 0, 1);
+                    container.Control.SetParameterAnimation(parameters, $"{_DistanceFade}.y", 0, 0.5f);
+                    container.Control.SetParameterAnimation(parameters, $"{_DistanceFade}.z", 0, 1);
+                    container.Control.SetParameterAnimation(parameters, $"{_DistanceFade}.w", 0, 1);
+                }
+
+                // Shadow Env Strength Control
+                if (container.ControlType.HasFlag(LightLimitControlType.ShadowEnvStrength) && !skipOptions.Contains("lilShadowEnvStrength", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _ShadowEnvStrength, DefaultParameters.ShadowEnvStrength);
+                    container.Control.SetParameterAnimation(parameters, _ShadowEnvStrength, 0, 1);
+                }
+
+                // Vertex Light Strength Control
+                if (container.ControlType.HasFlag(LightLimitControlType.VertexLightStrength) && !skipOptions.Contains("lilVertexLightStrength", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _VertexLightStrength, DefaultParameters.VertexLightStrength);
+                    container.Control.SetParameterAnimation(parameters, _VertexLightStrength, 0, 1);
                 }
             }
 

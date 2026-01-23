@@ -241,6 +241,13 @@ namespace io.github.azukimochi
                     });
                 }
 
+                // Flat menu hierarchy option - return main menu directly without root wrapper
+                if (session.Parameters.UseFlatMenuHierarchy)
+                {
+                    mainMenu.name = "Light Limit Changer";
+                    return mainMenu;
+                }
+
                 var rootMenu = ScriptableObject.CreateInstance<VRCExpressionsMenu>().AddTo(cache);
                 {
                     rootMenu.name = "Root Menu";

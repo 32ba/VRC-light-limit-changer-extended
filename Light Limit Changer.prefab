@@ -49,6 +49,8 @@ MonoBehaviour:
     IsValueSave: 0
     OverwriteDefaultLightMinMax: 1
     DefaultLightValue: 0.5
+    DefaultMinLightValue: 0.05
+    DefaultMaxLightValue: 1
     MaxLightValue: 1
     MinLightValue: 0
     TargetShader: 0
@@ -57,8 +59,48 @@ MonoBehaviour:
       Targets: []
     AllowColorTempControl: 0
     AllowSaturationControl: 0
+    AllowMonochromeControl: 0
     AllowUnlitControl: 0
+    AllowEmissionControl: 0
     AddResetButton: 0
+    InitialTempControlValue: 0.5
+    InitialSaturationControlValue: 0.5
+    InitialMonochromeControlValue: 0
+    DefaultMonochromeLightingValue: 0
+    DefaultMonochromeAdditiveLightingValue: 0
+    InitialUnlitControlValue: 0
+    IsSeparateLightControl: 0
+    IsGroupingAdditionalControls: 0
+    UseFlatMenuHierarchy: 0
+    AllowHueControl: 0
+    AllowValueControl: 0
+    AllowGammaControl: 0
+    InitialHueControlValue: 0.5
+    InitialValueControlValue: 0.5
+    InitialGammaControlValue: 0.5
+    AllowLightDirectionControl: 0
+    AllowRimLightControl: 0
+    AllowBacklightControl: 0
+    AllowDistanceFadeControl: 0
+    AllowShadowEnvStrengthControl: 0
+    AllowVertexLightStrengthControl: 0
+    InitialRimLightStrengthValue: 0
+    InitialBacklightStrengthValue: 0
+    InitialDistanceFadeStrengthValue: 0
+    InitialShadowEnvStrengthValue: 0
+    InitialVertexLightStrengthValue: 0
+    AllowRimLightBorderControl: 0
+    AllowRimLightBlurControl: 0
+    AllowRimLightFresnelPowerControl: 0
+    AllowBacklightBorderControl: 0
+    AllowBacklightBlurControl: 0
+    AllowBacklightDirectivityControl: 0
+    InitialRimLightBorderValue: 0.5
+    InitialRimLightBlurValue: 0.65
+    InitialRimLightFresnelPowerValue: 0.07
+    InitialBacklightBorderValue: 0.65
+    InitialBacklightBlurValue: 0.05
+    InitialBacklightDirectivityValue: 0.5
 --- !u!114 &2992164003499654213
 MonoBehaviour:
   m_ObjectHideFlags: 0

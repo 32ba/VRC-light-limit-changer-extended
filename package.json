@@ -1,22 +1,20 @@
 {
-  "name": "io.github.azukimochi.light-limit-changer",
-  "version": "1.14.4",
+  "name": "net.32ba.light-limit-changer-extended",
+  "version": "1.15.0",
   "unity": "2019.4",
-  "displayName": "LightLimitChanger",
-  "description": "Light Limit ChangerはModular-Avatar前提のVRChatアバター向けの明るさ変更ジェネレーターです。―――――――――――――――――― Light Limit Changer is a brightness change generator for VRChat avatars based on Modular-Avatar. ―――――――――――――――――― by Azukimochi25",
+  "displayName": "LightLimitChangerExtended",
+  "description": "Light Limit Changer Extended - VRChat向けの明るさ変更ツール（Modular Avatar前提）。Azukimochi氏のLight Limit Changerをベースに拡張機能を追加。",
   "author": {
-    "name": "Azukimochi",
-    "url": "https://github.com/Azukimochi"
+    "name": "32ba",
+    "url": "https://github.com/32ba"
   },
-  "url" : "",
-  "legacyFolders" : {
-     "Assets/LightLimitChangerForMA" : "d16480667da21494ebcd863403b37688"
+  "url": "",
+  "legacyFolders": {
+    "Assets/LightLimitChangerForMA": "d16480667da21494ebcd863403b37688"
   },
-  "documentationUrl": "https://azukimochi.github.io/LLC-Docs/",
-  "changelogUrl": "https://azukimochi.github.io/LLC-Docs/docs/changelog",
-  "vpmDependencies" : {
-    "com.vrchat.avatars" : ">=3.2.0",
-    "nadena.dev.modular-avatar" : "^1.9.9",
-    "nadena.dev.ndmf" : "^1.4.0"
+  "vpmDependencies": {
+    "com.vrchat.avatars": ">=3.2.0",
+    "nadena.dev.modular-avatar": "^1.9.9",
+    "nadena.dev.ndmf": "^1.4.0"
   }
 }
