@@ -14,7 +14,7 @@ namespace io.github.azukimochi
         public float DefaultLightValue = 0.5f;
 
         [Range(0, 1)]
-        public float DefaultMinLightValue = 0.0f;
+        public float DefaultMinLightValue = 0.05f;
 
         [Range(0, 1)]
         public float DefaultMaxLightValue = 1.0f;
@@ -83,19 +83,19 @@ namespace io.github.azukimochi
         public bool AllowVertexLightStrengthControl = false;
 
         [Range(0,1)]
-        public float InitialRimLightStrengthValue = 0.5f;
+        public float InitialRimLightStrengthValue = 0.0f;
 
         [Range(0,1)]
-        public float InitialBacklightStrengthValue = 0.5f;
+        public float InitialBacklightStrengthValue = 0.0f;
 
         [Range(0,1)]
-        public float InitialDistanceFadeStrengthValue = 0.5f;
+        public float InitialDistanceFadeStrengthValue = 0.0f;
 
         [Range(0,1)]
-        public float InitialShadowEnvStrengthValue = 0.5f;
+        public float InitialShadowEnvStrengthValue = 0.0f;
 
         [Range(0,1)]
-        public float InitialVertexLightStrengthValue = 0.5f;
+        public float InitialVertexLightStrengthValue = 0.0f;
 
         // lilToon Detailed Controls
         public bool AllowRimLightBorderControl = false;
@@ -109,16 +109,16 @@ namespace io.github.azukimochi
         public float InitialRimLightBorderValue = 0.5f;
 
         [Range(0,1)]
-        public float InitialRimLightBlurValue = 0.5f;
+        public float InitialRimLightBlurValue = 0.65f;
 
         [Range(0,1)]
-        public float InitialRimLightFresnelPowerValue = 0.5f;
+        public float InitialRimLightFresnelPowerValue = 0.07f;
 
         [Range(0,1)]
-        public float InitialBacklightBorderValue = 0.5f;
+        public float InitialBacklightBorderValue = 0.65f;
 
         [Range(0,1)]
-        public float InitialBacklightBlurValue = 0.5f;
+        public float InitialBacklightBlurValue = 0.05f;
 
         [Range(0,1)]
         public float InitialBacklightDirectivityValue = 0.5f;

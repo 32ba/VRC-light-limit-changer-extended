@@ -77,6 +77,7 @@ namespace io.github.azukimochi
 
             private static class DefaultParameters
             {
+                // v2ドキュメントに基づくデフォルト値
                 public static readonly float LightMinLimit = 0.05f;
                 public static readonly float LightMaxLimit = 1f;
                 public static readonly Color Color = Color.white;
@@ -87,13 +88,13 @@ namespace io.github.azukimochi
                 public static readonly float MonochromeLighting = 0;
                 public static readonly Vector4 LightDirectionOverride = new Vector4(0, 0.001f, 0, 0);
                 public static readonly float UseRim = 0;
-                public static readonly float RimMainStrength = 1;
+                public static readonly float RimMainStrength = 0;
                 public static readonly float RimBorder = 0.5f;
-                public static readonly float RimBlur = 0.1f;
-                public static readonly float RimFresnelPower = 3.0f;
+                public static readonly float RimBlur = 0.65f;
+                public static readonly float RimFresnelPower = 3.5f;
                 public static readonly float UseBacklight = 0;
-                public static readonly float BacklightMainStrength = 1;
-                public static readonly float BacklightBorder = 0.35f;
+                public static readonly float BacklightMainStrength = 0;
+                public static readonly float BacklightBorder = 0.65f;
                 public static readonly float BacklightBlur = 0.05f;
                 public static readonly float BacklightDirectivity = 5.0f;
                 public static readonly Vector4 DistanceFade = new Vector4(0.1f, 0.01f, 0, 0);

@@ -49,7 +49,7 @@ MonoBehaviour:
     IsValueSave: 0
     OverwriteDefaultLightMinMax: 1
     DefaultLightValue: 0.5
-    DefaultMinLightValue: 0
+    DefaultMinLightValue: 0.05
     DefaultMaxLightValue: 1
     MaxLightValue: 1
     MinLightValue: 0
@@ -84,11 +84,11 @@ MonoBehaviour:
     AllowDistanceFadeControl: 0
     AllowShadowEnvStrengthControl: 0
     AllowVertexLightStrengthControl: 0
-    InitialRimLightStrengthValue: 0.5
-    InitialBacklightStrengthValue: 0.5
-    InitialDistanceFadeStrengthValue: 0.5
-    InitialShadowEnvStrengthValue: 0.5
-    InitialVertexLightStrengthValue: 0.5
+    InitialRimLightStrengthValue: 0
+    InitialBacklightStrengthValue: 0
+    InitialDistanceFadeStrengthValue: 0
+    InitialShadowEnvStrengthValue: 0
+    InitialVertexLightStrengthValue: 0
     AllowRimLightBorderControl: 0
     AllowRimLightBlurControl: 0
     AllowRimLightFresnelPowerControl: 0
@@ -96,10 +96,10 @@ MonoBehaviour:
     AllowBacklightBlurControl: 0
     AllowBacklightDirectivityControl: 0
     InitialRimLightBorderValue: 0.5
-    InitialRimLightBlurValue: 0.5
-    InitialRimLightFresnelPowerValue: 0.5
-    InitialBacklightBorderValue: 0.5
-    InitialBacklightBlurValue: 0.5
+    InitialRimLightBlurValue: 0.65
+    InitialRimLightFresnelPowerValue: 0.07
+    InitialBacklightBorderValue: 0.65
+    InitialBacklightBlurValue: 0.05
     InitialBacklightDirectivityValue: 0.5
 --- !u!114 &2992164003499654213
 MonoBehaviour:
