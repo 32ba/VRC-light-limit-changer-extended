@@ -1146,6 +1146,418 @@ Quest용 빌드의 경우 Quest 셰이더가 지원되지 않으므로 이 오�
                     "控制",
                     "추가 제어"
                 }
+            },
+
+            ///////////////////////////////////////////////////////
+            // lilToon Specific - Categories
+            {
+                "label.category.liltoon_settings", new []
+                {
+                    "lilToon Settings",
+                    "lilToon設定",
+                    "lilToon 設定",
+                    "lilToon 设置",
+                    "lilToon 설정"
+                }
+            },
+            {
+                "label.category.hsv_controls", new []
+                {
+                    "HSV Controls",
+                    "HSV調整",
+                    "HSV 控制",
+                    "HSV 控制",
+                    "HSV 제어"
+                }
+            },
+            {
+                "label.category.light_controls", new []
+                {
+                    "Light Controls",
+                    "ライト調整",
+                    "光照控制",
+                    "光照控制",
+                    "조명 제어"
+                }
+            },
+            {
+                "info.liltoon_only", new []
+                {
+                    "These settings are only available for lilToon shaders.",
+                    "これらの設定はlilToonシェーダー専用です。",
+                    "這些設定僅適用於 lilToon 著色器。",
+                    "这些设置仅适用于 lilToon 着色器。",
+                    "이 설정은 lilToon 셰이더에만 적용됩니다."
+                }
+            },
+            {
+                "info.initial_val_liltoon", new []
+                {
+                    "Default Values for lilToon Settings",
+                    "lilToon設定の初期値",
+                    "lilToon 設定的預設值",
+                    "lilToon 设置的预设值",
+                    "lilToon 설정 초기값"
+                }
+            },
+
+            ///////////////////////////////////////////////////////
+            // lilToon Specific - Labels
+            {
+                "label.allow_hue", new []
+                {
+                    "Enable Hue Control (lilToon)",
+                    "色相調整を有効にする (lilToon)",
+                    "啟用色相控制 (lilToon)",
+                    "启用色相控制 (lilToon)",
+                    "색상 조정 활성화 (lilToon)"
+                }
+            },
+            {
+                "label.allow_value", new []
+                {
+                    "Enable Value Control (lilToon)",
+                    "明度調整を有効にする (lilToon)",
+                    "啟用明度控制 (lilToon)",
+                    "启用明度控制 (lilToon)",
+                    "명도 조정 활성화 (lilToon)"
+                }
+            },
+            {
+                "label.allow_gamma", new []
+                {
+                    "Enable Gamma Control (lilToon)",
+                    "ガンマ調整を有効にする (lilToon)",
+                    "啟用伽瑪控制 (lilToon)",
+                    "启用伽马控制 (lilToon)",
+                    "감마 조정 활성화 (lilToon)"
+                }
+            },
+            {
+                "label.allow_light_direction", new []
+                {
+                    "Enable Light Direction Control (lilToon)",
+                    "光源の向き調整を有効にする (lilToon)",
+                    "啟用光源方向控制 (lilToon)",
+                    "启用光源方向控制 (lilToon)",
+                    "광원 방향 조정 활성화 (lilToon)"
+                }
+            },
+            {
+                "label.allow_rim_light", new []
+                {
+                    "Enable Rim Light Control (lilToon)",
+                    "リムライト調整を有効にする (lilToon)",
+                    "啟用邊緣光控制 (lilToon)",
+                    "启用边缘光控制 (lilToon)",
+                    "림 라이트 조정 활성화 (lilToon)"
+                }
+            },
+            {
+                "label.allow_backlight", new []
+                {
+                    "Enable Backlight Control (lilToon)",
+                    "逆光ライト調整を有効にする (lilToon)",
+                    "啟用逆光控制 (lilToon)",
+                    "启用逆光控制 (lilToon)",
+                    "백라이트 조정 활성화 (lilToon)"
+                }
+            },
+            {
+                "label.allow_distance_fade", new []
+                {
+                    "Enable Distance Fade Control (lilToon)",
+                    "距離フェード調整を有効にする (lilToon)",
+                    "啟用距離淡化控制 (lilToon)",
+                    "启用距离淡化控制 (lilToon)",
+                    "거리 페이드 조정 활성화 (lilToon)"
+                }
+            },
+            {
+                "label.allow_shadow_env_strength", new []
+                {
+                    "Enable Shadow Env Strength Control (lilToon)",
+                    "影環境強度調整を有効にする (lilToon)",
+                    "啟用陰影環境強度控制 (lilToon)",
+                    "启用阴影环境强度控制 (lilToon)",
+                    "그림자 환경 강도 조정 활성화 (lilToon)"
+                }
+            },
+            {
+                "label.allow_vertex_light_strength", new []
+                {
+                    "Enable Vertex Light Strength Control (lilToon)",
+                    "頂点ライト強度調整を有効にする (lilToon)",
+                    "啟用頂點光照強度控制 (lilToon)",
+                    "启用顶点光照强度控制 (lilToon)",
+                    "버텍스 라이트 강도 조정 활성화 (lilToon)"
+                }
+            },
+            {
+                "label.hue", new []
+                {
+                    "Hue",
+                    "色相",
+                    "色相",
+                    "色相",
+                    "색상"
+                }
+            },
+            {
+                "label.value", new []
+                {
+                    "Value",
+                    "明度",
+                    "明度",
+                    "明度",
+                    "명도"
+                }
+            },
+            {
+                "label.gamma", new []
+                {
+                    "Gamma",
+                    "ガンマ",
+                    "伽瑪",
+                    "伽马",
+                    "감마"
+                }
+            },
+            {
+                "label.rim_light", new []
+                {
+                    "Rim Light",
+                    "リムライト",
+                    "邊緣光",
+                    "边缘光",
+                    "림 라이트"
+                }
+            },
+            {
+                "label.backlight", new []
+                {
+                    "Backlight",
+                    "逆光",
+                    "逆光",
+                    "逆光",
+                    "백라이트"
+                }
+            },
+            {
+                "label.distance_fade", new []
+                {
+                    "Distance Fade",
+                    "距離フェード",
+                    "距離淡化",
+                    "距离淡化",
+                    "거리 페이드"
+                }
+            },
+            {
+                "label.shadow_env", new []
+                {
+                    "Shadow Env",
+                    "影環境",
+                    "陰影環境",
+                    "阴影环境",
+                    "그림자 환경"
+                }
+            },
+            {
+                "label.vertex_light", new []
+                {
+                    "Vertex Light",
+                    "頂点ライト",
+                    "頂點光照",
+                    "顶点光照",
+                    "버텍스 라이트"
+                }
+            },
+
+            ///////////////////////////////////////////////////////
+            // lilToon Specific - Tips
+            {
+                "tip.allow_hue", new []
+                {
+                    "Enables hue adjustment functionality (lilToon only)",
+                    "色相の調整機能を有効化します (lilToon専用)",
+                    "啟用色相調整功能 (僅 lilToon)",
+                    "启用色相调整功能 (仅 lilToon)",
+                    "색상 조정 기능을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_value", new []
+                {
+                    "Enables value (brightness) adjustment functionality (lilToon only)",
+                    "明度の調整機能を有効化します (lilToon専用)",
+                    "啟用明度調整功能 (僅 lilToon)",
+                    "启用明度调整功能 (仅 lilToon)",
+                    "명도 조정 기능을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_gamma", new []
+                {
+                    "Enables gamma adjustment functionality (lilToon only)",
+                    "ガンマの調整機能を有効化します (lilToon専用)",
+                    "啟用伽瑪調整功能 (僅 lilToon)",
+                    "启用伽马调整功能 (仅 lilToon)",
+                    "감마 조정 기능을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_light_direction", new []
+                {
+                    "Enables light direction override functionality (lilToon only)",
+                    "光源の向きの上書き機能を有効化します (lilToon専用)",
+                    "啟用光源方向覆蓋功能 (僅 lilToon)",
+                    "启用光源方向覆盖功能 (仅 lilToon)",
+                    "광원 방향 재정의 기능을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_rim_light", new []
+                {
+                    "Enables rim light strength adjustment functionality (lilToon only)",
+                    "リムライト強度の調整機能を有効化します (lilToon専用)",
+                    "啟用邊緣光強度調整功能 (僅 lilToon)",
+                    "启用边缘光强度调整功能 (仅 lilToon)",
+                    "림 라이트 강도 조정 기능을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_backlight", new []
+                {
+                    "Enables backlight strength adjustment functionality (lilToon only)",
+                    "逆光ライト強度の調整機能を有効化します (lilToon専用)",
+                    "啟用逆光強度調整功能 (僅 lilToon)",
+                    "启用逆光强度调整功能 (仅 lilToon)",
+                    "백라이트 강도 조정 기능을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_distance_fade", new []
+                {
+                    "Enables distance fade adjustment functionality (lilToon only)",
+                    "距離フェードの調整機能を有効化します (lilToon専用)",
+                    "啟用距離淡化調整功能 (僅 lilToon)",
+                    "启用距离淡化调整功能 (仅 lilToon)",
+                    "거리 페이드 조정 기능을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_shadow_env_strength", new []
+                {
+                    "Enables shadow environment strength adjustment functionality (lilToon only)",
+                    "影環境強度の調整機能を有効化します (lilToon専用)",
+                    "啟用陰影環境強度調整功能 (僅 lilToon)",
+                    "启用阴影环境强度调整功能 (仅 lilToon)",
+                    "그림자 환경 강도 조정 기능을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_vertex_light_strength", new []
+                {
+                    "Enables vertex light strength adjustment functionality (lilToon only)",
+                    "頂点ライト強度の調整機能を有効化します (lilToon専用)",
+                    "啟用頂點光照強度調整功能 (僅 lilToon)",
+                    "启用顶点光照强度调整功能 (仅 lilToon)",
+                    "버텍스 라이트 강도 조정 기능을 활성화합니다 (lilToon 전용)"
+                }
+            },
+
+            ///////////////////////////////////////////////////////
+            // lilToon Specific - ExpressionMenu
+            {
+                "ExpressionMenu.hue", new []
+                {
+                    "Hue",
+                    "色相",
+                    "色相",
+                    "色相",
+                    "색상"
+                }
+            },
+            {
+                "ExpressionMenu.value", new []
+                {
+                    "Value",
+                    "明度",
+                    "明度",
+                    "明度",
+                    "명도"
+                }
+            },
+            {
+                "ExpressionMenu.gamma", new []
+                {
+                    "Gamma",
+                    "ガンマ",
+                    "伽瑪",
+                    "伽马",
+                    "감마"
+                }
+            },
+            {
+                "ExpressionMenu.light_direction", new []
+                {
+                    "Light Direction",
+                    "光源の向き",
+                    "光源方向",
+                    "光源方向",
+                    "광원 방향"
+                }
+            },
+            {
+                "ExpressionMenu.rim_light", new []
+                {
+                    "Rim Light",
+                    "リムライト",
+                    "邊緣光",
+                    "边缘光",
+                    "림 라이트"
+                }
+            },
+            {
+                "ExpressionMenu.backlight", new []
+                {
+                    "Backlight",
+                    "逆光",
+                    "逆光",
+                    "逆光",
+                    "백라이트"
+                }
+            },
+            {
+                "ExpressionMenu.distance_fade", new []
+                {
+                    "Distance Fade",
+                    "距離フェード",
+                    "距離淡化",
+                    "距离淡化",
+                    "거리 페이드"
+                }
+            },
+            {
+                "ExpressionMenu.shadow_env_strength", new []
+                {
+                    "Shadow Env Strength",
+                    "影環境強度",
+                    "陰影環境強度",
+                    "阴影环境强度",
+                    "그림자 환경 강도"
+                }
+            },
+            {
+                "ExpressionMenu.vertex_light_strength", new []
+                {
+                    "Vertex Light Strength",
+                    "頂点ライト強度",
+                    "頂點光照強度",
+                    "顶点光照强度",
+                    "버텍스 라이트 강도"
+                }
             }
         };
 
