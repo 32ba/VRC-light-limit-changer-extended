@@ -57,6 +57,10 @@ namespace io.github.azukimochi
         private static bool _isOptionFoldoutOpen = true;
         private static bool _isCepareteInitValFoldoutOpen = false;
         private static bool _isLilToonFoldoutOpen = false;
+        private static bool _isLightSettingsFoldoutOpen = true;
+        private static bool _isColorSettingsFoldoutOpen = false;
+        private static bool _isEffectSettingsFoldoutOpen = false;
+        private static bool _isMenuSettingsFoldoutOpen = false;
 
         internal bool IsWindowMode = false;
 
@@ -170,85 +174,77 @@ namespace io.github.azukimochi
                     }
                 }
             }
+            // Light Settings Section
             EditorGUILayout.Space(10);
-            EditorGUILayout.PropertyField(IsSeparateLightControl, Localization.G("label.separate_light_control"));
-            EditorGUILayout.PropertyField(MaxLightValue, Localization.G("label.light_max", "tip.light_max"));
-            EditorGUILayout.PropertyField(MinLightValue, Localization.G("label.light_min", "tip.light_min"));
-            EditorGUI.BeginDisabledGroup(IsSeparateLightControl.boolValue == true);
-            EditorGUILayout.PropertyField(DefaultLightValue, Localization.G("label.light_default", "tip.light_default"));
-            EditorGUI.EndDisabledGroup();
-            
-            EditorGUI.BeginDisabledGroup(IsSeparateLightControl.boolValue == false);
-            _isCepareteInitValFoldoutOpen = EditorGUILayout.Foldout(_isCepareteInitValFoldoutOpen,
-                Localization.G("label.separate_light_control_init_val"));
-            if (_isCepareteInitValFoldoutOpen)
+            using (var group = new Utils.FoldoutHeaderGroupScope(ref _isLightSettingsFoldoutOpen, Localization.G("label.category.light_settings")))
             {
-                EditorGUILayout.PropertyField(DefaultMaxLightValue, Localization.G("label.light_max_default"));
-                EditorGUILayout.PropertyField(DefaultMinLightValue, Localization.G("label.light_min_default"));
-            }
-            EditorGUI.EndDisabledGroup();
-            
-            EditorGUILayout.Space(10);
-            EditorGUILayout.LabelField(Localization.S("label.category.additional_settings"), boldLabel);
-            
-            using (new EditorGUILayout.HorizontalScope())
-            {
-                using (new EditorGUILayout.VerticalScope())
+                if (group.IsOpen)
                 {
-                    EditorGUILayout.Space(25);
-                    EditorGUILayout.PropertyField(AllowColorTempControl,
-                        Localization.G("label.allow_color_tmp", "tip.allow_color_tmp"));
-                    EditorGUILayout.PropertyField(AllowSaturationControl,
-                        Localization.G("label.allow_saturation", "tip.allow_saturation"));
-                    EditorGUILayout.PropertyField(AllowMonochromeControl,
-                        Localization.G("label.allow_monochrome", "tip.allow_monochrome"));
-                    EditorGUILayout.PropertyField(AllowUnlitControl,
-                        Localization.G("label.allow_unlit", "tip.allow_unlit"));
-                    EditorGUILayout.PropertyField(AllowEmissionControl,
-                        Localization.G("label.allow_emission", "tip.allow_emission"));
-                    EditorGUILayout.Space(5);
+                    EditorGUILayout.PropertyField(IsSeparateLightControl, Localization.G("label.separate_light_control"));
+                    EditorGUILayout.PropertyField(MaxLightValue, Localization.G("label.light_max", "tip.light_max"));
+                    EditorGUILayout.PropertyField(MinLightValue, Localization.G("label.light_min", "tip.light_min"));
+                    EditorGUI.BeginDisabledGroup(IsSeparateLightControl.boolValue == true);
+                    EditorGUILayout.PropertyField(DefaultLightValue, Localization.G("label.light_default", "tip.light_default"));
+                    EditorGUI.EndDisabledGroup();
+
+                    EditorGUI.BeginDisabledGroup(IsSeparateLightControl.boolValue == false);
+                    using (new EditorGUI.IndentLevelScope())
+                    {
+                        _isCepareteInitValFoldoutOpen = EditorGUILayout.Foldout(_isCepareteInitValFoldoutOpen,
+                            Localization.G("label.separate_light_control_init_val"));
+                        if (_isCepareteInitValFoldoutOpen)
+                        {
+                            EditorGUILayout.PropertyField(DefaultMaxLightValue, Localization.G("label.light_max_default"));
+                            EditorGUILayout.PropertyField(DefaultMinLightValue, Localization.G("label.light_min_default"));
+                        }
+                    }
+                    EditorGUI.EndDisabledGroup();
+                }
+            }
+
+            // Color & Effect Settings Section
+            EditorGUILayout.Space(5);
+            using (var group = new Utils.FoldoutHeaderGroupScope(ref _isColorSettingsFoldoutOpen, Localization.G("label.category.color_effect_settings")))
+            {
+                if (group.IsOpen)
+                {
+                    using (new EditorGUILayout.HorizontalScope())
+                    {
+                        using (new EditorGUILayout.VerticalScope())
+                        {
+                            EditorGUILayout.PropertyField(AllowColorTempControl,
+                                Localization.G("label.allow_color_tmp", "tip.allow_color_tmp"));
+                            EditorGUILayout.PropertyField(AllowSaturationControl,
+                                Localization.G("label.allow_saturation", "tip.allow_saturation"));
+                            EditorGUILayout.PropertyField(AllowMonochromeControl,
+                                Localization.G("label.allow_monochrome", "tip.allow_monochrome"));
+                            EditorGUILayout.PropertyField(AllowUnlitControl,
+                                Localization.G("label.allow_unlit", "tip.allow_unlit"));
+                            EditorGUILayout.PropertyField(AllowEmissionControl,
+                                Localization.G("label.allow_emission", "tip.allow_emission"));
+                        }
+
+                        using (new EditorGUILayout.VerticalScope(GUI.skin.box))
+                        {
+                            EditorGUILayout.LabelField(Localization.G("info.initial_val"));
+                            DrawInitialValueField(Localization.G("label.color_temp"), InitialTempControlValue, AllowColorTempControl.boolValue);
+                            DrawInitialValueField(Localization.G("label.saturation"), InitialSaturationControlValue, AllowSaturationControl.boolValue);
+                            DrawInitialValueField(Localization.G("label.monochrome"), InitialMonochromeControlValue, AllowMonochromeControl.boolValue);
+                            DrawInitialValueField(Localization.G("label.unlit"), InitialUnlitControlValue, AllowUnlitControl.boolValue);
+                        }
+                    }
+                }
+            }
+
+            // Menu Settings Section
+            EditorGUILayout.Space(5);
+            using (var group = new Utils.FoldoutHeaderGroupScope(ref _isMenuSettingsFoldoutOpen, Localization.G("label.category.menu_settings")))
+            {
+                if (group.IsOpen)
+                {
                     EditorGUILayout.PropertyField(AddResetButton, Localization.G("label.allow_reset", "tip.allow_reset"));
                     EditorGUILayout.PropertyField(IsGroupingAdditionalControls, Localization.G("label.grouping_additional_controls"));
                     EditorGUILayout.PropertyField(UseFlatMenuHierarchy, Localization.G("label.flat_menu_hierarchy", "tip.flat_menu_hierarchy"));
-
-                }
-
-                using (new EditorGUILayout.VerticalScope(GUI.skin.box))
-                {
-                    EditorGUILayout.LabelField(Localization.G("info.initial_val"));
-                    using (new EditorGUILayout.HorizontalScope())
-                    {
-                        EditorGUILayout.Space(10);
-                        EditorGUILayout.LabelField(Localization.G("label.color_temp"), GUILayout.MaxWidth(70.0f), GUILayout.ExpandWidth(false));
-                        EditorGUI.BeginDisabledGroup(AllowColorTempControl.boolValue == false);
-                        EditorGUILayout.PropertyField(InitialTempControlValue, Localization.G(""));
-                        EditorGUI.EndDisabledGroup();
-                    }
-                    using (new EditorGUILayout.HorizontalScope())
-                    {
-                        EditorGUILayout.Space(10);
-                        EditorGUILayout.LabelField(Localization.G("label.saturation"), GUILayout.MaxWidth(70.0f), GUILayout.ExpandWidth(false));
-                        EditorGUI.BeginDisabledGroup(AllowSaturationControl.boolValue == false);
-                        EditorGUILayout.PropertyField(InitialSaturationControlValue, Localization.G(""));
-                        EditorGUI.EndDisabledGroup();
-
-                    }
-                    using (new EditorGUILayout.HorizontalScope())
-                    {
-                        EditorGUILayout.Space(10);
-                        EditorGUILayout.LabelField(Localization.G("label.monochrome"), GUILayout.MaxWidth(70.0f), GUILayout.ExpandWidth(false));
-                        EditorGUI.BeginDisabledGroup(AllowMonochromeControl.boolValue == false);
-                        EditorGUILayout.PropertyField(InitialMonochromeControlValue, Localization.G(""));
-                        EditorGUI.EndDisabledGroup();
-                    }
-                    using (new EditorGUILayout.HorizontalScope())
-                    {
-                        EditorGUILayout.Space(10);
-                        EditorGUILayout.LabelField(Localization.G("label.unlit"), GUILayout.MaxWidth(70.0f), GUILayout.ExpandWidth(false));
-                        EditorGUI.BeginDisabledGroup(AllowUnlitControl.boolValue == false);
-                        EditorGUILayout.PropertyField(InitialUnlitControlValue, Localization.G(""));
-                        EditorGUI.EndDisabledGroup();
-                    }
                 }
             }
 
@@ -372,6 +368,18 @@ namespace io.github.azukimochi
             {
                 EditorGUILayout.Separator();
                 Localization.ShowLocalizationUI();
+            }
+        }
+
+        private void DrawInitialValueField(GUIContent label, SerializedProperty property, bool enabled)
+        {
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                EditorGUILayout.Space(10);
+                EditorGUILayout.LabelField(label, GUILayout.MaxWidth(70.0f), GUILayout.ExpandWidth(false));
+                EditorGUI.BeginDisabledGroup(!enabled);
+                EditorGUILayout.PropertyField(property, GUIContent.none);
+                EditorGUI.EndDisabledGroup();
             }
         }
     }

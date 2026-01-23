@@ -137,6 +137,36 @@ so please consider using the latter version if it becomes unusable.",
                 }
             },
             {
+                "label.category.light_settings", new []
+                {
+                    "Light Settings",
+                    "明るさ設定",
+                    "亮度設定",
+                    "亮度设置",
+                    "밝기 설정"
+                }
+            },
+            {
+                "label.category.color_effect_settings", new []
+                {
+                    "Color & Effect Settings",
+                    "カラー・エフェクト設定",
+                    "顏色和效果設定",
+                    "颜色和效果设置",
+                    "색상 & 효과 설정"
+                }
+            },
+            {
+                "label.category.menu_settings", new []
+                {
+                    "Menu Settings",
+                    "メニュー設定",
+                    "選單設定",
+                    "菜单设置",
+                    "메뉴 설정"
+                }
+            },
+            {
                 "label.use_default", new []
                 {
                     "Apply on Initial State",
