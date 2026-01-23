@@ -29,6 +29,7 @@ namespace io.github.azukimochi
         private SerializedProperty AddResetButton;
         private SerializedProperty IsGroupingAdditionalControls;
         private SerializedProperty IsSeparateLightControl;
+        private SerializedProperty UseFlatMenuHierarchy;
         private SerializedProperty Excludes;
         private SerializedProperty WriteDefaults;
 
@@ -86,6 +87,7 @@ namespace io.github.azukimochi
             AddResetButton = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AddResetButton));
             IsSeparateLightControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.IsSeparateLightControl));
             IsGroupingAdditionalControls = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.IsGroupingAdditionalControls));
+            UseFlatMenuHierarchy = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.UseFlatMenuHierarchy));
             Excludes = serializedObject.FindProperty(nameof(LightLimitChangerSettings.Excludes));
             WriteDefaults = serializedObject.FindProperty(nameof(LightLimitChangerSettings.WriteDefaults));
 
@@ -207,7 +209,7 @@ namespace io.github.azukimochi
                     EditorGUILayout.Space(5);
                     EditorGUILayout.PropertyField(AddResetButton, Localization.G("label.allow_reset", "tip.allow_reset"));
                     EditorGUILayout.PropertyField(IsGroupingAdditionalControls, Localization.G("label.grouping_additional_controls"));
-
+                    EditorGUILayout.PropertyField(UseFlatMenuHierarchy, Localization.G("label.flat_menu_hierarchy", "tip.flat_menu_hierarchy"));
 
                 }
 

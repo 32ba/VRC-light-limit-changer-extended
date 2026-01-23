@@ -327,6 +327,26 @@ so please consider using the latter version if it becomes unusable.",
                 }
             },
             {
+                "label.flat_menu_hierarchy", new []
+                {
+                    "Use Flat Menu Hierarchy",
+                    "メニュー階層をフラット化する",
+                    "使用扁平選單結構",
+                    "使用扁平菜单结构",
+                    "메뉴 계층을 플랫화"
+                }
+            },
+            {
+                "tip.flat_menu_hierarchy", new []
+                {
+                    "Place all controls directly in the avatar menu without a submenu wrapper",
+                    "サブメニューを作らずにアバターメニューに直接配置する",
+                    "將所有控制項直接放置在 Avatar 選單中，不使用子選單",
+                    "将所有控制项直接放置在 Avatar 菜单中，不使用子菜单",
+                    "서브메뉴를 만들지 않고 아바타 메뉴에 직접 배치"
+                }
+            },
+            {
                 "label.separate_light_control", new []
                 {
                     "Set Min/Max Brightness Individually",

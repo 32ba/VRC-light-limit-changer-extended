@@ -58,6 +58,8 @@ namespace io.github.azukimochi
 
         public bool IsGroupingAdditionalControls = false;
 
+        public bool UseFlatMenuHierarchy = false;
+
         // HSV Controls (lilToon)
         public bool AllowHueControl = false;
         public bool AllowValueControl = false;
