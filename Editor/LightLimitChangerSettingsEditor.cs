@@ -54,9 +54,24 @@ namespace io.github.azukimochi
         private SerializedProperty InitialShadowEnvStrengthValue;
         private SerializedProperty InitialVertexLightStrengthValue;
 
+        // lilToon Detailed Controls
+        private SerializedProperty AllowRimLightBorderControl;
+        private SerializedProperty AllowRimLightBlurControl;
+        private SerializedProperty AllowRimLightFresnelPowerControl;
+        private SerializedProperty AllowBacklightBorderControl;
+        private SerializedProperty AllowBacklightBlurControl;
+        private SerializedProperty AllowBacklightDirectivityControl;
+        private SerializedProperty InitialRimLightBorderValue;
+        private SerializedProperty InitialRimLightBlurValue;
+        private SerializedProperty InitialRimLightFresnelPowerValue;
+        private SerializedProperty InitialBacklightBorderValue;
+        private SerializedProperty InitialBacklightBlurValue;
+        private SerializedProperty InitialBacklightDirectivityValue;
+
         private static bool _isOptionFoldoutOpen = true;
         private static bool _isCepareteInitValFoldoutOpen = false;
         private static bool _isLilToonFoldoutOpen = false;
+        private static bool _isLilToonDetailedFoldoutOpen = false;
         private static bool _isLightSettingsFoldoutOpen = true;
         private static bool _isColorSettingsFoldoutOpen = false;
         private static bool _isEffectSettingsFoldoutOpen = false;
@@ -115,6 +130,20 @@ namespace io.github.azukimochi
             InitialDistanceFadeStrengthValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialDistanceFadeStrengthValue));
             InitialShadowEnvStrengthValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialShadowEnvStrengthValue));
             InitialVertexLightStrengthValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialVertexLightStrengthValue));
+
+            // lilToon Detailed Controls
+            AllowRimLightBorderControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowRimLightBorderControl));
+            AllowRimLightBlurControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowRimLightBlurControl));
+            AllowRimLightFresnelPowerControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowRimLightFresnelPowerControl));
+            AllowBacklightBorderControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowBacklightBorderControl));
+            AllowBacklightBlurControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowBacklightBlurControl));
+            AllowBacklightDirectivityControl = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.AllowBacklightDirectivityControl));
+            InitialRimLightBorderValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialRimLightBorderValue));
+            InitialRimLightBlurValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialRimLightBlurValue));
+            InitialRimLightFresnelPowerValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialRimLightFresnelPowerValue));
+            InitialBacklightBorderValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialBacklightBorderValue));
+            InitialBacklightBlurValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialBacklightBlurValue));
+            InitialBacklightDirectivityValue = parameters.FindPropertyRelative(nameof(LightLimitChangerParameters.InitialBacklightDirectivityValue));
         }
 
         public override void OnInspectorGUI()
@@ -342,6 +371,35 @@ namespace io.github.azukimochi
                                 EditorGUILayout.PropertyField(InitialVertexLightStrengthValue, Localization.G(""));
                                 EditorGUI.EndDisabledGroup();
                             }
+                        }
+                    }
+
+                    // Detailed lilToon Controls
+                    EditorGUILayout.Space(10);
+                    _isLilToonDetailedFoldoutOpen = EditorGUILayout.Foldout(_isLilToonDetailedFoldoutOpen, Localization.G("label.category.liltoon_detailed"), true);
+                    if (_isLilToonDetailedFoldoutOpen)
+                    {
+                        using (new EditorGUI.IndentLevelScope())
+                        {
+                            EditorGUILayout.LabelField(Localization.G("label.category.rim_light_detailed"), EditorStyles.boldLabel);
+                            EditorGUILayout.PropertyField(AllowRimLightBorderControl, Localization.G("label.allow_rim_light_border", "tip.allow_rim_light_border"));
+                            EditorGUILayout.PropertyField(AllowRimLightBlurControl, Localization.G("label.allow_rim_light_blur", "tip.allow_rim_light_blur"));
+                            EditorGUILayout.PropertyField(AllowRimLightFresnelPowerControl, Localization.G("label.allow_rim_light_fresnel", "tip.allow_rim_light_fresnel"));
+
+                            EditorGUILayout.Space(5);
+                            EditorGUILayout.LabelField(Localization.G("label.category.backlight_detailed"), EditorStyles.boldLabel);
+                            EditorGUILayout.PropertyField(AllowBacklightBorderControl, Localization.G("label.allow_backlight_border", "tip.allow_backlight_border"));
+                            EditorGUILayout.PropertyField(AllowBacklightBlurControl, Localization.G("label.allow_backlight_blur", "tip.allow_backlight_blur"));
+                            EditorGUILayout.PropertyField(AllowBacklightDirectivityControl, Localization.G("label.allow_backlight_directivity", "tip.allow_backlight_directivity"));
+
+                            EditorGUILayout.Space(5);
+                            EditorGUILayout.LabelField(Localization.G("info.initial_val"), EditorStyles.boldLabel);
+                            DrawInitialValueField(Localization.G("label.rim_border"), InitialRimLightBorderValue, AllowRimLightBorderControl.boolValue);
+                            DrawInitialValueField(Localization.G("label.rim_blur"), InitialRimLightBlurValue, AllowRimLightBlurControl.boolValue);
+                            DrawInitialValueField(Localization.G("label.rim_fresnel"), InitialRimLightFresnelPowerValue, AllowRimLightFresnelPowerControl.boolValue);
+                            DrawInitialValueField(Localization.G("label.backlight_border"), InitialBacklightBorderValue, AllowBacklightBorderControl.boolValue);
+                            DrawInitialValueField(Localization.G("label.backlight_blur"), InitialBacklightBlurValue, AllowBacklightBlurControl.boolValue);
+                            DrawInitialValueField(Localization.G("label.backlight_directivity"), InitialBacklightDirectivityValue, AllowBacklightDirectivityControl.boolValue);
                         }
                     }
                 }

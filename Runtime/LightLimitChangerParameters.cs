@@ -96,5 +96,31 @@ namespace io.github.azukimochi
 
         [Range(0,1)]
         public float InitialVertexLightStrengthValue = 0.5f;
+
+        // lilToon Detailed Controls
+        public bool AllowRimLightBorderControl = false;
+        public bool AllowRimLightBlurControl = false;
+        public bool AllowRimLightFresnelPowerControl = false;
+        public bool AllowBacklightBorderControl = false;
+        public bool AllowBacklightBlurControl = false;
+        public bool AllowBacklightDirectivityControl = false;
+
+        [Range(0,1)]
+        public float InitialRimLightBorderValue = 0.5f;
+
+        [Range(0,1)]
+        public float InitialRimLightBlurValue = 0.5f;
+
+        [Range(0,1)]
+        public float InitialRimLightFresnelPowerValue = 0.5f;
+
+        [Range(0,1)]
+        public float InitialBacklightBorderValue = 0.5f;
+
+        [Range(0,1)]
+        public float InitialBacklightBlurValue = 0.5f;
+
+        [Range(0,1)]
+        public float InitialBacklightDirectivityValue = 0.5f;
     }
 }

@@ -67,8 +67,26 @@ namespace io.github.azukimochi
             if (parameters.AllowRimLightControl)
                 yield return Parameter<float>(Passes.ParameterName_RimLight);
 
+            if (parameters.AllowRimLightBorderControl)
+                yield return Parameter<float>(Passes.ParameterName_RimLightBorder);
+
+            if (parameters.AllowRimLightBlurControl)
+                yield return Parameter<float>(Passes.ParameterName_RimLightBlur);
+
+            if (parameters.AllowRimLightFresnelPowerControl)
+                yield return Parameter<float>(Passes.ParameterName_RimLightFresnelPower);
+
             if (parameters.AllowBacklightControl)
                 yield return Parameter<float>(Passes.ParameterName_Backlight);
+
+            if (parameters.AllowBacklightBorderControl)
+                yield return Parameter<float>(Passes.ParameterName_BacklightBorder);
+
+            if (parameters.AllowBacklightBlurControl)
+                yield return Parameter<float>(Passes.ParameterName_BacklightBlur);
+
+            if (parameters.AllowBacklightDirectivityControl)
+                yield return Parameter<float>(Passes.ParameterName_BacklightDirectivity);
 
             if (parameters.AllowDistanceFadeControl)
                 yield return Parameter<float>(Passes.ParameterName_DistanceFade);

@@ -1608,6 +1608,288 @@ Quest용 빌드의 경우 Quest 셰이더가 지원되지 않으므로 이 오�
                     "顶点光照强度",
                     "버텍스 라이트 강도"
                 }
+            },
+
+            ///////////////////////////////////////////////////////
+            // lilToon Detailed Controls - Categories
+            {
+                "label.category.liltoon_detailed", new []
+                {
+                    "Detailed Controls",
+                    "詳細設定",
+                    "詳細設定",
+                    "详细设置",
+                    "상세 설정"
+                }
+            },
+            {
+                "label.category.rim_light_detailed", new []
+                {
+                    "Rim Light Detailed",
+                    "リムライト詳細",
+                    "邊緣光詳細",
+                    "边缘光详细",
+                    "림 라이트 상세"
+                }
+            },
+            {
+                "label.category.backlight_detailed", new []
+                {
+                    "Backlight Detailed",
+                    "逆光詳細",
+                    "逆光詳細",
+                    "逆光详细",
+                    "백라이트 상세"
+                }
+            },
+
+            ///////////////////////////////////////////////////////
+            // lilToon Detailed Controls - Labels
+            {
+                "label.allow_rim_light_border", new []
+                {
+                    "Enable Rim Light Border Control",
+                    "リムライト範囲を有効にする",
+                    "啟用邊緣光範圍控制",
+                    "启用边缘光范围控制",
+                    "림 라이트 범위 조정 활성화"
+                }
+            },
+            {
+                "label.allow_rim_light_blur", new []
+                {
+                    "Enable Rim Light Blur Control",
+                    "リムライトぼかしを有効にする",
+                    "啟用邊緣光模糊控制",
+                    "启用边缘光模糊控制",
+                    "림 라이트 블러 조정 활성화"
+                }
+            },
+            {
+                "label.allow_rim_light_fresnel", new []
+                {
+                    "Enable Rim Light Fresnel Control",
+                    "リムライト細さを有効にする",
+                    "啟用邊緣光菲涅爾控制",
+                    "启用边缘光菲涅尔控制",
+                    "림 라이트 프레넬 조정 활성화"
+                }
+            },
+            {
+                "label.allow_backlight_border", new []
+                {
+                    "Enable Backlight Border Control",
+                    "逆光影の範囲を有効にする",
+                    "啟用逆光範圍控制",
+                    "启用逆光范围控制",
+                    "백라이트 범위 조정 활성화"
+                }
+            },
+            {
+                "label.allow_backlight_blur", new []
+                {
+                    "Enable Backlight Blur Control",
+                    "逆光影のぼかしを有効にする",
+                    "啟用逆光模糊控制",
+                    "启用逆光模糊控制",
+                    "백라이트 블러 조정 활성화"
+                }
+            },
+            {
+                "label.allow_backlight_directivity", new []
+                {
+                    "Enable Backlight Directivity Control",
+                    "逆光指向性を有効にする",
+                    "啟用逆光指向性控制",
+                    "启用逆光指向性控制",
+                    "백라이트 지향성 조정 활성화"
+                }
+            },
+            {
+                "label.rim_border", new []
+                {
+                    "Rim Border",
+                    "リム範囲",
+                    "邊緣範圍",
+                    "边缘范围",
+                    "림 범위"
+                }
+            },
+            {
+                "label.rim_blur", new []
+                {
+                    "Rim Blur",
+                    "リムぼかし",
+                    "邊緣模糊",
+                    "边缘模糊",
+                    "림 블러"
+                }
+            },
+            {
+                "label.rim_fresnel", new []
+                {
+                    "Rim Fresnel",
+                    "リム細さ",
+                    "邊緣菲涅爾",
+                    "边缘菲涅尔",
+                    "림 프레넬"
+                }
+            },
+            {
+                "label.backlight_border", new []
+                {
+                    "BL Border",
+                    "逆光範囲",
+                    "逆光範圍",
+                    "逆光范围",
+                    "백라이트 범위"
+                }
+            },
+            {
+                "label.backlight_blur", new []
+                {
+                    "BL Blur",
+                    "逆光ぼかし",
+                    "逆光模糊",
+                    "逆光模糊",
+                    "백라이트 블러"
+                }
+            },
+            {
+                "label.backlight_directivity", new []
+                {
+                    "BL Directivity",
+                    "逆光指向性",
+                    "逆光指向性",
+                    "逆光指向性",
+                    "백라이트 지향성"
+                }
+            },
+
+            ///////////////////////////////////////////////////////
+            // lilToon Detailed Controls - Tips
+            {
+                "tip.allow_rim_light_border", new []
+                {
+                    "Enables rim light border (range) adjustment (lilToon only)",
+                    "リムライトの範囲調整を有効化します (lilToon専用)",
+                    "啟用邊緣光範圍調整 (僅 lilToon)",
+                    "启用边缘光范围调整 (仅 lilToon)",
+                    "림 라이트 범위 조정을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_rim_light_blur", new []
+                {
+                    "Enables rim light blur adjustment (lilToon only)",
+                    "リムライトのぼかし調整を有効化します (lilToon専用)",
+                    "啟用邊緣光模糊調整 (僅 lilToon)",
+                    "启用边缘光模糊调整 (仅 lilToon)",
+                    "림 라이트 블러 조정을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_rim_light_fresnel", new []
+                {
+                    "Enables rim light fresnel power (fineness) adjustment (lilToon only)",
+                    "リムライトの細さ調整を有効化します (lilToon専用)",
+                    "啟用邊緣光菲涅爾調整 (僅 lilToon)",
+                    "启用边缘光菲涅尔调整 (仅 lilToon)",
+                    "림 라이트 프레넬 조정을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_backlight_border", new []
+                {
+                    "Enables backlight border (shadow range) adjustment (lilToon only)",
+                    "逆光の影の範囲調整を有効化します (lilToon専用)",
+                    "啟用逆光範圍調整 (僅 lilToon)",
+                    "启用逆光范围调整 (仅 lilToon)",
+                    "백라이트 범위 조정을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_backlight_blur", new []
+                {
+                    "Enables backlight blur adjustment (lilToon only)",
+                    "逆光のぼかし調整を有効化します (lilToon専用)",
+                    "啟用逆光模糊調整 (僅 lilToon)",
+                    "启用逆光模糊调整 (仅 lilToon)",
+                    "백라이트 블러 조정을 활성화합니다 (lilToon 전용)"
+                }
+            },
+            {
+                "tip.allow_backlight_directivity", new []
+                {
+                    "Enables backlight directivity adjustment (lilToon only)",
+                    "逆光の指向性調整を有効化します (lilToon専用)",
+                    "啟用逆光指向性調整 (僅 lilToon)",
+                    "启用逆光指向性调整 (仅 lilToon)",
+                    "백라이트 지향성 조정을 활성화합니다 (lilToon 전용)"
+                }
+            },
+
+            ///////////////////////////////////////////////////////
+            // lilToon Detailed Controls - ExpressionMenu
+            {
+                "ExpressionMenu.rim_light_border", new []
+                {
+                    "Rim Light Border",
+                    "リムライト範囲",
+                    "邊緣光範圍",
+                    "边缘光范围",
+                    "림 라이트 범위"
+                }
+            },
+            {
+                "ExpressionMenu.rim_light_blur", new []
+                {
+                    "Rim Light Blur",
+                    "リムライトぼかし",
+                    "邊緣光模糊",
+                    "边缘光模糊",
+                    "림 라이트 블러"
+                }
+            },
+            {
+                "ExpressionMenu.rim_light_fresnel", new []
+                {
+                    "Rim Light Fresnel",
+                    "リムライト細さ",
+                    "邊緣光菲涅爾",
+                    "边缘光菲涅尔",
+                    "림 라이트 프레넬"
+                }
+            },
+            {
+                "ExpressionMenu.backlight_border", new []
+                {
+                    "Backlight Border",
+                    "逆光範囲",
+                    "逆光範圍",
+                    "逆光范围",
+                    "백라이트 범위"
+                }
+            },
+            {
+                "ExpressionMenu.backlight_blur", new []
+                {
+                    "Backlight Blur",
+                    "逆光ぼかし",
+                    "逆光模糊",
+                    "逆光模糊",
+                    "백라이트 블러"
+                }
+            },
+            {
+                "ExpressionMenu.backlight_directivity", new []
+                {
+                    "Backlight Directivity",
+                    "逆光指向性",
+                    "逆光指向性",
+                    "逆光指向性",
+                    "백라이트 지향성"
+                }
             }
         };
 

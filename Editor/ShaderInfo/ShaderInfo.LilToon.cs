@@ -329,11 +329,53 @@ namespace io.github.azukimochi
                     container.Control.SetParameterAnimation(parameters, _RimMainStrength, 0, 1);
                 }
 
+                // Rim Light Border Control
+                if (container.ControlType.HasFlag(LightLimitControlType.RimLightBorder) && !skipOptions.Contains("lilRimLightBorder", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _RimBorder, DefaultParameters.RimBorder);
+                    container.Control.SetParameterAnimation(parameters, _RimBorder, 0, 1);
+                }
+
+                // Rim Light Blur Control
+                if (container.ControlType.HasFlag(LightLimitControlType.RimLightBlur) && !skipOptions.Contains("lilRimLightBlur", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _RimBlur, DefaultParameters.RimBlur);
+                    container.Control.SetParameterAnimation(parameters, _RimBlur, 0, 1);
+                }
+
+                // Rim Light Fresnel Power Control
+                if (container.ControlType.HasFlag(LightLimitControlType.RimLightFresnelPower) && !skipOptions.Contains("lilRimLightFresnelPower", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _RimFresnelPower, DefaultParameters.RimFresnelPower);
+                    container.Control.SetParameterAnimation(parameters, _RimFresnelPower, 0.01f, 50);
+                }
+
                 // Backlight Control
                 if (container.ControlType.HasFlag(LightLimitControlType.Backlight) && !skipOptions.Contains("lilBacklight", StringComparer.OrdinalIgnoreCase))
                 {
                     container.Default.SetParameterAnimation(parameters, _BacklightMainStrength, DefaultParameters.BacklightMainStrength);
                     container.Control.SetParameterAnimation(parameters, _BacklightMainStrength, 0, 1);
+                }
+
+                // Backlight Border Control
+                if (container.ControlType.HasFlag(LightLimitControlType.BacklightBorder) && !skipOptions.Contains("lilBacklightBorder", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _BacklightBorder, DefaultParameters.BacklightBorder);
+                    container.Control.SetParameterAnimation(parameters, _BacklightBorder, 0, 1);
+                }
+
+                // Backlight Blur Control
+                if (container.ControlType.HasFlag(LightLimitControlType.BacklightBlur) && !skipOptions.Contains("lilBacklightBlur", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _BacklightBlur, DefaultParameters.BacklightBlur);
+                    container.Control.SetParameterAnimation(parameters, _BacklightBlur, 0, 1);
+                }
+
+                // Backlight Directivity Control
+                if (container.ControlType.HasFlag(LightLimitControlType.BacklightDirectivity) && !skipOptions.Contains("lilBacklightDirectivity", StringComparer.OrdinalIgnoreCase))
+                {
+                    container.Default.SetParameterAnimation(parameters, _BacklightDirectivity, DefaultParameters.BacklightDirectivity);
+                    container.Control.SetParameterAnimation(parameters, _BacklightDirectivity, 0, 10);
                 }
 
                 // Distance Fade Control

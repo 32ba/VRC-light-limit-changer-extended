@@ -46,7 +46,13 @@ namespace io.github.azukimochi
         internal const string ParameterName_Gamma = "LightLimitGamma";
         internal const string ParameterName_LightDirection = "LightLimitLightDirection";
         internal const string ParameterName_RimLight = "LightLimitRimLight";
+        internal const string ParameterName_RimLightBorder = "LightLimitRimLightBorder";
+        internal const string ParameterName_RimLightBlur = "LightLimitRimLightBlur";
+        internal const string ParameterName_RimLightFresnelPower = "LightLimitRimLightFresnelPower";
         internal const string ParameterName_Backlight = "LightLimitBacklight";
+        internal const string ParameterName_BacklightBorder = "LightLimitBacklightBorder";
+        internal const string ParameterName_BacklightBlur = "LightLimitBacklightBlur";
+        internal const string ParameterName_BacklightDirectivity = "LightLimitBacklightDirectivity";
         internal const string ParameterName_DistanceFade = "LightLimitDistanceFade";
         internal const string ParameterName_ShadowEnvStrength = "LightLimitShadowEnvStrength";
         internal const string ParameterName_VertexLightStrength = "LightLimitVertexLightStrength";
@@ -198,10 +204,46 @@ namespace io.github.azukimochi
                     controls.Add(ControlAnimationContainer.Create(LightLimitControlType.RimLight, Localization.S("ExpressionMenu.rim_light"), "RimLight", ParameterName_RimLight, parameters.InitialRimLightStrengthValue, Icons.Light, defaultAnimation));
                 }
 
+                if (parameters.AllowRimLightBorderControl)
+                {
+                    targetControl |= LightLimitControlType.RimLightBorder;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.RimLightBorder, Localization.S("ExpressionMenu.rim_light_border"), "RimLightBorder", ParameterName_RimLightBorder, parameters.InitialRimLightBorderValue, Icons.Light, defaultAnimation));
+                }
+
+                if (parameters.AllowRimLightBlurControl)
+                {
+                    targetControl |= LightLimitControlType.RimLightBlur;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.RimLightBlur, Localization.S("ExpressionMenu.rim_light_blur"), "RimLightBlur", ParameterName_RimLightBlur, parameters.InitialRimLightBlurValue, Icons.Light, defaultAnimation));
+                }
+
+                if (parameters.AllowRimLightFresnelPowerControl)
+                {
+                    targetControl |= LightLimitControlType.RimLightFresnelPower;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.RimLightFresnelPower, Localization.S("ExpressionMenu.rim_light_fresnel"), "RimLightFresnelPower", ParameterName_RimLightFresnelPower, parameters.InitialRimLightFresnelPowerValue, Icons.Light, defaultAnimation));
+                }
+
                 if (parameters.AllowBacklightControl)
                 {
                     targetControl |= LightLimitControlType.Backlight;
                     controls.Add(ControlAnimationContainer.Create(LightLimitControlType.Backlight, Localization.S("ExpressionMenu.backlight"), "Backlight", ParameterName_Backlight, parameters.InitialBacklightStrengthValue, Icons.Light, defaultAnimation));
+                }
+
+                if (parameters.AllowBacklightBorderControl)
+                {
+                    targetControl |= LightLimitControlType.BacklightBorder;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.BacklightBorder, Localization.S("ExpressionMenu.backlight_border"), "BacklightBorder", ParameterName_BacklightBorder, parameters.InitialBacklightBorderValue, Icons.Light, defaultAnimation));
+                }
+
+                if (parameters.AllowBacklightBlurControl)
+                {
+                    targetControl |= LightLimitControlType.BacklightBlur;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.BacklightBlur, Localization.S("ExpressionMenu.backlight_blur"), "BacklightBlur", ParameterName_BacklightBlur, parameters.InitialBacklightBlurValue, Icons.Light, defaultAnimation));
+                }
+
+                if (parameters.AllowBacklightDirectivityControl)
+                {
+                    targetControl |= LightLimitControlType.BacklightDirectivity;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.BacklightDirectivity, Localization.S("ExpressionMenu.backlight_directivity"), "BacklightDirectivity", ParameterName_BacklightDirectivity, parameters.InitialBacklightDirectivityValue, Icons.Light, defaultAnimation));
                 }
 
                 if (parameters.AllowDistanceFadeControl)

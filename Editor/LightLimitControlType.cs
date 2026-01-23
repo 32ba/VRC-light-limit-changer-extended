@@ -22,8 +22,15 @@ namespace io.github.azukimochi
         Hue = 1 << 14,
         Value = 1 << 15,
         Gamma = 1 << 16,
+        RimLightBorder = 1 << 17,
+        RimLightBlur = 1 << 18,
+        RimLightFresnelPower = 1 << 19,
+        BacklightBorder = 1 << 20,
+        BacklightBlur = 1 << 21,
+        BacklightDirectivity = 1 << 22,
 
         AdditionalControls = Saturation | Unlit | ColorTemperature | Monochrome | Emission,
         LilToonControls = LightDirection | RimLight | Backlight | DistanceFade | ShadowEnvStrength | VertexLightStrength | Hue | Value | Gamma,
+        LilToonDetailedControls = RimLightBorder | RimLightBlur | RimLightFresnelPower | BacklightBorder | BacklightBlur | BacklightDirectivity,
     }
 }
