@@ -41,6 +41,15 @@ namespace io.github.azukimochi
         internal const string ParameterName_Emission = "LightLimitEmission";
         internal const string ParameterName_Reset = "LightLimitReset";
         internal const string ParameterName_Monochrome = "LightLimitMonochrome";
+        internal const string ParameterName_Hue = "LightLimitHue";
+        internal const string ParameterName_Value_HSV = "LightLimitValue_HSV";
+        internal const string ParameterName_Gamma = "LightLimitGamma";
+        internal const string ParameterName_LightDirection = "LightLimitLightDirection";
+        internal const string ParameterName_RimLight = "LightLimitRimLight";
+        internal const string ParameterName_Backlight = "LightLimitBacklight";
+        internal const string ParameterName_DistanceFade = "LightLimitDistanceFade";
+        internal const string ParameterName_ShadowEnvStrength = "LightLimitShadowEnvStrength";
+        internal const string ParameterName_VertexLightStrength = "LightLimitVertexLightStrength";
 
         private static Session GetSession(BuildContext context)
         {
@@ -157,6 +166,61 @@ namespace io.github.azukimochi
                     controls.Add(ControlAnimationContainer.Create(LightLimitControlType.Emission, Localization.S("ExpressionMenu.emission"), "Emission", ParameterName_Emission, 1.0f, Icons.Emission, defaultAnimation));
                 }
 
+                // HSV Controls (lilToon)
+                if (parameters.AllowHueControl)
+                {
+                    targetControl |= LightLimitControlType.Hue;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.Hue, Localization.S("ExpressionMenu.hue"), "Hue", ParameterName_Hue, parameters.InitialHueControlValue, Icons.Color, defaultAnimation));
+                }
+
+                if (parameters.AllowValueControl)
+                {
+                    targetControl |= LightLimitControlType.Value;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.Value, Localization.S("ExpressionMenu.value"), "Value", ParameterName_Value_HSV, parameters.InitialValueControlValue, Icons.Light, defaultAnimation));
+                }
+
+                if (parameters.AllowGammaControl)
+                {
+                    targetControl |= LightLimitControlType.Gamma;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.Gamma, Localization.S("ExpressionMenu.gamma"), "Gamma", ParameterName_Gamma, parameters.InitialGammaControlValue, Icons.Light, defaultAnimation));
+                }
+
+                // lilToon Specific Controls
+                if (parameters.AllowLightDirectionControl)
+                {
+                    targetControl |= LightLimitControlType.LightDirection;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.LightDirection, Localization.S("ExpressionMenu.light_direction"), "LightDirection", ParameterName_LightDirection, 0.5f, Icons.Light, defaultAnimation));
+                }
+
+                if (parameters.AllowRimLightControl)
+                {
+                    targetControl |= LightLimitControlType.RimLight;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.RimLight, Localization.S("ExpressionMenu.rim_light"), "RimLight", ParameterName_RimLight, parameters.InitialRimLightStrengthValue, Icons.Light, defaultAnimation));
+                }
+
+                if (parameters.AllowBacklightControl)
+                {
+                    targetControl |= LightLimitControlType.Backlight;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.Backlight, Localization.S("ExpressionMenu.backlight"), "Backlight", ParameterName_Backlight, parameters.InitialBacklightStrengthValue, Icons.Light, defaultAnimation));
+                }
+
+                if (parameters.AllowDistanceFadeControl)
+                {
+                    targetControl |= LightLimitControlType.DistanceFade;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.DistanceFade, Localization.S("ExpressionMenu.distance_fade"), "DistanceFade", ParameterName_DistanceFade, parameters.InitialDistanceFadeStrengthValue, Icons.Light, defaultAnimation));
+                }
+
+                if (parameters.AllowShadowEnvStrengthControl)
+                {
+                    targetControl |= LightLimitControlType.ShadowEnvStrength;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.ShadowEnvStrength, Localization.S("ExpressionMenu.shadow_env_strength"), "ShadowEnvStrength", ParameterName_ShadowEnvStrength, parameters.InitialShadowEnvStrengthValue, Icons.Light, defaultAnimation));
+                }
+
+                if (parameters.AllowVertexLightStrengthControl)
+                {
+                    targetControl |= LightLimitControlType.VertexLightStrength;
+                    controls.Add(ControlAnimationContainer.Create(LightLimitControlType.VertexLightStrength, Localization.S("ExpressionMenu.vertex_light_strength"), "VertexLightStrength", ParameterName_VertexLightStrength, parameters.InitialVertexLightStrengthValue, Icons.Light, defaultAnimation));
+                }
 
                 Controls = controls.ToArray();
 
